@@ -3,6 +3,7 @@ import org.jetbrains.compose.ExperimentalComposeLibrary
 plugins {
     kotlin("multiplatform")
     alias(libs.plugins.compose)
+    `maven-publish`
 }
 
 version = "0.1"

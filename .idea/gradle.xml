@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/remotedata" />
             <option value="$PROJECT_DIR$/remotedata-androidlayout" />
+            <option value="$PROJECT_DIR$/remotedata-bom" />
             <option value="$PROJECT_DIR$/remotedata-compose" />
             <option value="$PROJECT_DIR$/remotedata-flow" />
             <option value="$PROJECT_DIR$/remotedata-rx2" />
