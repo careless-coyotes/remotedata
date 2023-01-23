@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm")
+    `maven-publish`
 }
 
 group = "remotedata"
@@ -19,4 +20,13 @@ dependencies {
 
 tasks.withType<Test> {
     useTestNG()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("lib") {
+            from(components["kotlin"])
+            artifact(tasks.kotlinSourcesJar)
+        }
+    }
 }
