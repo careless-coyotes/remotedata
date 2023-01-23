@@ -34,13 +34,13 @@ inline fun <E, D> RemoteData<E, D>.bind(
 inline fun <E, D, R> RemoteData<E, D>.fold(
     ifNotAsked: () -> R,
     ifLoading: () -> R,
-    ifFailure: (RemoteData.Failure<E>) -> R,
-    ifSuccess: (RemoteData.Success<D>) -> R,
+    ifFailure: (E) -> R,
+    ifSuccess: (D) -> R,
 ) = when (this) {
     RemoteData.NotAsked -> ifNotAsked()
     RemoteData.Loading -> ifLoading()
-    is RemoteData.Failure -> ifFailure(this)
-    is RemoteData.Success -> ifSuccess(this)
+    is RemoteData.Failure -> ifFailure(error)
+    is RemoteData.Success -> ifSuccess(data)
 }
 
 

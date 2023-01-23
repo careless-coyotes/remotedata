@@ -73,8 +73,8 @@ class RemoteDataTest {
     private fun <E, D, R> RemoteData<E, D>.foldOrFail(
         ifNotAsked: () -> R = { fail() },
         ifLoading: () -> R = { fail() },
-        ifFailure: (RemoteData.Failure<E>) -> R = { fail() },
-        ifSuccess: (RemoteData.Success<D>) -> R = { fail() },
+        ifFailure: (E) -> R = { fail() },
+        ifSuccess: (D) -> R = { fail() },
     ) =
         fold(
             ifNotAsked = ifNotAsked,
