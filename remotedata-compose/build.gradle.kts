@@ -2,7 +2,6 @@ import org.jetbrains.compose.ExperimentalComposeLibrary
 
 plugins {
     kotlin("multiplatform")
-    id("com.android.library")
     alias(libs.plugins.compose)
 }
 
@@ -14,8 +13,7 @@ repositories {
 }
 
 kotlin {
-    android()
-    jvm("desktop")
+    jvm()
 
     sourceSets {
         named("commonMain") {
@@ -33,36 +31,12 @@ kotlin {
             }
         }
 
-        named("androidMain") {
-            dependencies {
-                implementation(kotlin("test-junit"))
-            }
-        }
-
-        named("desktopTest") {
+        named("jvmTest") {
             dependencies {
                 implementation(kotlin("test-junit"))
                 implementation(@OptIn(ExperimentalComposeLibrary::class) compose.uiTestJUnit4)
                 implementation(compose.desktop.currentOs)
             }
-        }
-    }
-}
-
-android {
-    compileSdk = 32
-
-    defaultConfig {
-        @Suppress("UnstableApiUsage")
-        minSdk = 21
-        @Suppress("UnstableApiUsage")
-        targetSdk = 32
-    }
-
-    @Suppress("UnstableApiUsage")
-    sourceSets {
-        named("main") {
-            manifest.srcFile("src/androidMain/AndroidManifest.xml")
         }
     }
 }
