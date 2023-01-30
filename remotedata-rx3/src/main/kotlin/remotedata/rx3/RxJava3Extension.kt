@@ -10,7 +10,11 @@ import remotedata.mapFailure
 
 
 /**
- * Lifts a receiver [Single] to the context of [RemoteData].
+ * Lifts receiver [Single] values to the context of [RemoteData].
+ *
+ * Using this function produces a stream that begins its emission with
+ * [RemoteData.Loading], then emits its values wrapped in [RemoteData.Success],
+ * while catching errors into [RemoteData.Failure].
  */
 fun <T : Any> Single<T>.remotelify(): Observable<RemoteData<Throwable, T>> = this
     .map<RemoteData<Throwable, T>> { it.success() }
@@ -18,12 +22,18 @@ fun <T : Any> Single<T>.remotelify(): Observable<RemoteData<Throwable, T>> = thi
     .onErrorReturn { it.failure() }
 
 
+/**
+ * Applies given [f] to the underlying [RemoteData.Success] values.
+ */
 inline fun <E, A, B> Observable<RemoteData<E, A>>.mapSuccess(
     crossinline f: (A) -> B,
 ): Observable<RemoteData<E, B>> = this
     .map { it.map(f) }
 
 
+/**
+ * Applies given [f] to the underlying [RemoteData.Failure] values.
+ */
 inline fun <D, A, B> Observable<RemoteData<A, D>>.mapFailure(
     crossinline f: (A) -> B,
 ): Observable<RemoteData<B, D>> = this

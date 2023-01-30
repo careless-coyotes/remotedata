@@ -6,7 +6,10 @@ import android.widget.TextView
 import remotedata.RemoteData
 import remotedata.bind
 
-
+/**
+ * Binds receiver [RemoteData] to specified [ProgressBar], error [TextView] and
+ * invokes [bindData] to populate the success view.
+ */
 fun <A> RemoteData<String, A>.bind(
     loadingIndicator: ProgressBar,
     errorTextView: TextView,

@@ -12,5 +12,6 @@ rxjava3-rxkotlin = { group = "io.reactivex.rxjava3", name = "rxkotlin", version 
 testng = { group = "org.testng", name = "testng", version = "7.6.1" }
 
 [plugins]
-kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version = "0.6.1" }
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
+dokka = { id = "org.jetbrains.dokka", version = "1.7.20" }
+kotlinx-kover = { id = "org.jetbrains.kotlinx.kover", version = "0.6.1" }
