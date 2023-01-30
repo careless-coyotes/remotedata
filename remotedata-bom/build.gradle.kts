@@ -1,9 +1,10 @@
 plugins {
     `java-platform`
     `maven-publish`
+    signing
 }
 
-group = "remotedata"
+group = "com.carelesscoyotes.remotedata"
 version = "0.2"
 
 repositories {
@@ -26,4 +27,9 @@ publishing {
             from(components["javaPlatform"])
         }
     }
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications)
 }
