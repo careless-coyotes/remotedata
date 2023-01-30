@@ -1,9 +1,10 @@
 plugins {
     kotlin("multiplatform")
     `maven-publish`
+    signing
 }
 
-group = "remotedata"
+group = "com.carelesscoyotes.remotedata"
 version = "0.2"
 
 repositories {
@@ -39,4 +40,9 @@ kotlin {
 
 tasks.withType<Test> {
     useTestNG()
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications)
 }

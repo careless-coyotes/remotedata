@@ -1,7 +1,12 @@
 plugins {
     id("com.android.library")
     kotlin("android")
+    `maven-publish`
+    signing
 }
+
+group = "com.carelesscoyotes.remotedata"
+version = "0.1"
 
 android {
     compileSdk = 32
@@ -27,6 +32,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
 }
 
 repositories {
@@ -44,4 +55,19 @@ dependencies {
 
 tasks.withType<Test> {
     useTestNG()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("lib") {
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications)
 }

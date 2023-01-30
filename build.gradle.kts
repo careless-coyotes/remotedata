@@ -6,6 +6,7 @@ import kotlinx.kover.api.VerificationValueType
 plugins {
     base
     alias(libs.plugins.kotlinx.kover)
+    `maven-publish`
 }
 
 buildscript {
@@ -55,4 +56,53 @@ koverMerged {
 
 allprojects {
     apply<KoverPlugin>()
+}
+
+val release = hasProperty("release")
+
+subprojects {
+    afterEvaluate {
+        if (!release) version = "$version-SNAPSHOT"
+    }
+}
+
+subprojects {
+    plugins.withType<MavenPublishPlugin> {
+        publishing {
+            repositories {
+                maven(
+                    if (release) "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/"
+                    else "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+                ) {
+                    name = "MavenCentral"
+                    credentials {
+                        username = findProperty("ossrh.username").toString()
+                        password = findProperty("ossrh.password").toString()
+                    }
+                }
+            }
+            publications {
+                withType<MavenPublication> {
+                    pom {
+                        name.set(project.name)
+                        description.set("Remote request library for kotlin.")
+                        licenses {
+                            license {
+                                name.set("MIT License")
+                                url.set("https://opensource.org/licenses/MIT")
+                            }
+                        }
+                        scm {
+                            url.set("https://github.com/careless-coyotes/remotedata")
+                        }
+                        developers {
+                            developer {
+                                name.set("Careless Coyotes")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

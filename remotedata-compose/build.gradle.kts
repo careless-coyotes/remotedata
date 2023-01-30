@@ -4,8 +4,10 @@ plugins {
     kotlin("multiplatform")
     alias(libs.plugins.compose)
     `maven-publish`
+    signing
 }
 
+group = "com.carelesscoyotes.remotedata"
 version = "0.1"
 
 repositories {
@@ -40,4 +42,9 @@ kotlin {
             }
         }
     }
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications)
 }

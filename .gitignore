@@ -3,6 +3,7 @@
 build
 
 *.iml
+/.idea/artifacts
 /.idea/caches
 /.idea/libraries
 /.idea/modules.xml

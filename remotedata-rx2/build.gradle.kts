@@ -1,9 +1,10 @@
 plugins {
     kotlin("jvm")
     `maven-publish`
+    signing
 }
 
-group = "remotedata"
+group = "com.carelesscoyotes.remotedata"
 version = "0.1"
 
 repositories {
@@ -29,4 +30,9 @@ publishing {
             artifact(tasks.kotlinSourcesJar)
         }
     }
+}
+
+signing {
+    useGpgCmd()
+    sign(publishing.publications)
 }
