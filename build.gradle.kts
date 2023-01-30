@@ -6,6 +6,7 @@ import kotlinx.kover.api.VerificationValueType
 plugins {
     base
     alias(libs.plugins.kotlinx.kover)
+    alias(libs.plugins.dokka)
     `maven-publish`
 }
 
@@ -67,6 +68,14 @@ subprojects {
 }
 
 subprojects {
+    apply(plugin = "org.jetbrains.dokka")
+}
+
+subprojects {
+    val dokkaJar = tasks.create<Jar>("dokkaJar") {
+        archiveClassifier.set("javadoc")
+        from(tasks.dokkaHtml)
+    }
     plugins.withType<MavenPublishPlugin> {
         publishing {
             repositories {
@@ -83,9 +92,11 @@ subprojects {
             }
             publications {
                 withType<MavenPublication> {
+                    artifact(dokkaJar)
                     pom {
                         name.set(project.name)
-                        description.set("Remote request library for kotlin.")
+                        description.set("Remote request model library for Kotlin.")
+                        url.set("https://github.com/careless-coyotes/remotedata")
                         licenses {
                             license {
                                 name.set("MIT License")
