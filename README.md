@@ -127,7 +127,7 @@ You should also handle errors and data when request finishes successfully.
 
 ```kotlin
 api.requestStuff()
-    .remotelify()
+    .remotify()
     .collect { data: RemoteData<Throwable, Stuff> ->
         updateUi(data)
     }

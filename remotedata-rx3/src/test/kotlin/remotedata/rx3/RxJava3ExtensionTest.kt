@@ -11,9 +11,9 @@ import remotedata.RemoteData.Companion.success
 class RxJava3ExtensionTest {
 
     @Test
-    fun remotelifyJustUnit() {
+    fun remotifyJustUnit() {
         Single.just(Unit)
-            .remotelify()
+            .remotify()
             .test()
             .assertValues(
                 RemoteData.Loading,
@@ -23,11 +23,11 @@ class RxJava3ExtensionTest {
     }
 
     @Test
-    fun remotelifyError() {
+    fun remotifyError() {
         val error = Throwable()
 
         Single.error<Nothing>(error)
-            .remotelify()
+            .remotify()
             .test()
             .assertValues(
                 RemoteData.Loading,
@@ -37,9 +37,9 @@ class RxJava3ExtensionTest {
     }
 
     @Test
-    fun remotelifyNever() {
+    fun remotifyNever() {
         Single.never<Nothing>()
-            .remotelify()
+            .remotify()
             .test()
             .assertValues(
                 RemoteData.Loading,
