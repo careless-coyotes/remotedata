@@ -16,7 +16,7 @@ import remotedata.mapFailure
  * [RemoteData.Loading], then emits its values wrapped in [RemoteData.Success],
  * while catching errors into [RemoteData.Failure].
  */
-fun <T : Any> Single<T>.remotelify(): Observable<RemoteData<Throwable, T>> = this
+fun <T : Any> Single<T>.remotify(): Observable<RemoteData<Throwable, T>> = this
     .map<RemoteData<Throwable, T>> { it.success() }
     .startWith(Observable.just(RemoteData.Loading))
     .onErrorReturn { it.failure() }

@@ -13,9 +13,9 @@ import remotedata.RemoteData.Companion.success
 class FlowExtensionTest {
 
     @Test
-    fun remotelifyUnit() = runBlocking {
+    fun remotifyUnit() = runBlocking {
         val result = flowOf(Unit)
-            .remotelify()
+            .remotify()
 
         assertThat(result.toList())
             .containsExactly(RemoteData.Loading, Unit.success())
@@ -23,10 +23,10 @@ class FlowExtensionTest {
     }
 
     @Test
-    fun remotelifyError() = runBlocking {
+    fun remotifyError() = runBlocking {
         val error = Throwable("test error")
         val result = flow<Nothing> { throw error }
-            .remotelify()
+            .remotify()
 
         assertThat(result.toList())
             .containsExactly(RemoteData.Loading, error.failure())

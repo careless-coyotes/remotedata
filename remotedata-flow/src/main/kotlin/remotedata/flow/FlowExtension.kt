@@ -18,7 +18,7 @@ import remotedata.mapFailure
  * [RemoteData.Loading], then emits its values wrapped in [RemoteData.Success],
  * while catching errors into [RemoteData.Failure].
  */
-fun <T> Flow<T>.remotelify(): Flow<RemoteData<Throwable, T>> = this
+fun <T> Flow<T>.remotify(): Flow<RemoteData<Throwable, T>> = this
     .map<T, RemoteData<Throwable, T>> { it.success() }
     .onStart { emit(RemoteData.Loading) }
     .catch { emit(it.failure()) }
