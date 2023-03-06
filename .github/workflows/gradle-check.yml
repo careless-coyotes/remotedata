@@ -1,6 +1,10 @@
 name: Run Gradle check on Pull Requests
 
-on: pull_request
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
   build:
