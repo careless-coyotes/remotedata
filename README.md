@@ -1,6 +1,8 @@
 RemoteData library for Kotlin
 =============================
 
+![Codecov](https://img.shields.io/codecov/c/github/careless-coyotes/remotedata?logo=codecov)
+
 Handling remote requests in applications with UI is about displaying progress
 indicators, handling errors and populating data.
 This library provides you with a model of such request that help you to avoid

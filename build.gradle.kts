@@ -40,19 +40,20 @@ koverMerged {
         }
     }
 
-    htmlReport {
-        onCheck.set(true)
-        filters {
-            classes {
-                excludes += listOf(
-                    "remotedata.androidlayout.BuildConfig",
-                    "remotedata.compose.BuildConfig",
-                    "remotedata.compose.ComposableSingletons*",
-                    "remotedata.compose.RemoteDataViewTestKt*",
-                )
-            }
+    filters {
+        classes {
+            excludes += listOf(
+                "remotedata.androidlayout.BuildConfig",
+                "remotedata.compose.BuildConfig",
+                "remotedata.compose.ComposableSingletons*",
+                "remotedata.compose.RemoteDataViewTestKt*",
+            )
         }
     }
+
+    htmlReport { onCheck.set(true) }
+
+    xmlReport { onCheck.set(true) }
 }
 
 allprojects {
