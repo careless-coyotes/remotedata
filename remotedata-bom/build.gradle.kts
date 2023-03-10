@@ -13,11 +13,9 @@ repositories {
 
 dependencies {
     constraints {
-        rootProject.subprojects.forEach { subproject ->
-            if (subproject != project) {
-                api(subproject)
-            }
-        }
+        rootProject.subprojects
+            .filterNot(project::equals)
+            .forEach(::api)
     }
 }
 

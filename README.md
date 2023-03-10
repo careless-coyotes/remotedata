@@ -1,7 +1,9 @@
 RemoteData library for Kotlin
 =============================
 
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/careless-coyotes/remotedata/gradle-check.yml?logo=github    )
 ![Codecov](https://img.shields.io/codecov/c/github/careless-coyotes/remotedata?logo=codecov)
+![Maven Central](https://img.shields.io/maven-central/v/com.carelesscoyotes.remotedata/remotedata-bom?logo=maven)
 
 Handling remote requests in applications with UI is about displaying progress
 indicators, handling errors and populating data.
@@ -45,7 +47,7 @@ Modify `RemoteData` content with mapping functions:
 ```
 ```kotlin
 Throwable("What a Terrible Failure")
-    .failure()                      // Failure(Throwable("What a Terrible Failure")
+    .failure()                      // Failure(Throwable("What a Terrible Failure"))
     .mapFailure { it.description }  // Failure("What a Terrible Failure")
 ```
 
@@ -54,7 +56,7 @@ Folding `RemoteData` is also possible:
 ```kotlin
 fun toString(rd: RemoteData<Throwable, List<String>>) {
     rd.fold(
-        ifNotAsked = { "not asked"},
+        ifNotAsked = { "not asked" },
         ifLoading = { "loading" },
         ifFailure = { it.description },
         ifSuccess = { it.joinToString() },
@@ -181,7 +183,7 @@ And then adding dependencies in `build.gradle`:
 implementation(platform(libs.remotedata.bom))
 implementation(libs.remotedata)
 implementation(libs.remotedata.flow)
-...
+// ...
 ```
 
 [elm-remotedata]: http://blog.jenkster.com/2016/06/how-elm-slays-a-ui-antipattern.html
