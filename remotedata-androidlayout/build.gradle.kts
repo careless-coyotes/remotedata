@@ -6,31 +6,24 @@ plugins {
 }
 
 group = "com.carelesscoyotes.remotedata"
-version = "0.1"
+version = "0.2"
 
 android {
-    compileSdk = 32
+    compileSdk = 33
+
+    namespace = "remotedata.androidlayout"
 
     defaultConfig {
-        @Suppress("UnstableApiUsage")
         minSdk = 21
-        @Suppress("UnstableApiUsage")
-        targetSdk = 32
 
-        @Suppress("UnstableApiUsage")
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        @Suppress("UnstableApiUsage")
         consumerProguardFiles("consumer-rules.pro")
     }
 
     compileOptions {
-        @Suppress("UnstableApiUsage")
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        @Suppress("UnstableApiUsage")
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = "1.8"
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
 
     publishing {
@@ -38,6 +31,10 @@ android {
             withSourcesJar()
         }
     }
+}
+
+kotlin {
+    jvmToolchain(11)
 }
 
 repositories {

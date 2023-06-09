@@ -1,14 +1,15 @@
 package remotedata.flow
 
-import com.google.common.truth.Truth.assertThat
+import assertk.assertThat
+import assertk.assertions.containsExactly
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
-import org.testng.annotations.Test
 import remotedata.RemoteData
 import remotedata.RemoteData.Companion.failure
 import remotedata.RemoteData.Companion.success
+import kotlin.test.Test
 
 class FlowExtensionTest {
 
@@ -19,7 +20,6 @@ class FlowExtensionTest {
 
         assertThat(result.toList())
             .containsExactly(RemoteData.Loading, Unit.success())
-            .inOrder()
     }
 
     @Test
@@ -30,7 +30,6 @@ class FlowExtensionTest {
 
         assertThat(result.toList())
             .containsExactly(RemoteData.Loading, error.failure())
-            .inOrder()
     }
 
     @Test
@@ -49,7 +48,6 @@ class FlowExtensionTest {
 
         assertThat(result.toList())
             .containsExactly(RemoteData.NotAsked, RemoteData.Loading, error.failure(), dataAfterMap.success())
-            .inOrder()
     }
 
     @Test
@@ -67,6 +65,5 @@ class FlowExtensionTest {
 
         assertThat(result.toList())
             .containsExactly(RemoteData.NotAsked, RemoteData.Loading, errorAfterMap.failure(), Unit.success())
-            .inOrder()
     }
 }

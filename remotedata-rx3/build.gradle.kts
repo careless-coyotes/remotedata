@@ -19,6 +19,8 @@ dependencies {
     testImplementation(libs.testng)
 }
 
+kotlin.jvmToolchain(11)
+
 tasks.withType<Test> {
     useTestNG()
 }

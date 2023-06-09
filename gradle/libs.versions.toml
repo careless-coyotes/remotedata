@@ -1,15 +1,16 @@
 [versions]
-compose = "1.2.1"
-kotlin = "1.7.20"
+compose = "1.4.0"
+kotlin = "1.8.20"
 
 [libraries]
-android-gradle = { group = "com.android.tools.build", name = "gradle", version = "7.2.2" }
+android-gradle = { group = "com.android.tools.build", name = "gradle", version = "7.4.0" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = "1.6.4" }
+kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version = "1.7.1" }
 mockk = { group = "io.mockk", name = "mockk", version = "1.13.2" }
 rxjava2-rxkotlin = { group = "io.reactivex.rxjava2", name = "rxkotlin", version = "2.4.0" }
 rxjava3-rxkotlin = { group = "io.reactivex.rxjava3", name = "rxkotlin", version = "3.0.1" }
 testng = { group = "org.testng", name = "testng", version = "7.6.1" }
+assertk = { group = "com.willowtreeapps.assertk", name = "assertk", version = "0.26.1" }
 
 [plugins]
 compose = { id = "org.jetbrains.compose", version.ref = "compose" }
