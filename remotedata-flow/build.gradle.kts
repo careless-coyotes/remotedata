@@ -1,36 +1,46 @@
 plugins {
-    kotlin("jvm")
+    kotlin("multiplatform")
     `maven-publish`
     signing
 }
 
 group = "com.carelesscoyotes.remotedata"
-version = "0.2"
+version = "0.3"
 
 repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation(kotlin("stdlib"))
-    implementation(libs.kotlinx.coroutines.core)
-    api(project(":remotedata"))
+kotlin {
+    jvm()
+    linuxX64()
+    linuxArm64()
+    macosX64()
+    macosArm64()
+    ios()
+    iosSimulatorArm64()
 
-    testImplementation(libs.testng)
-    testImplementation("com.google.truth:truth:1.1.3")
+    sourceSets {
+        commonMain {
+            dependencies {
+                implementation(kotlin("stdlib-common"))
+                implementation(libs.kotlinx.coroutines.core)
+                api(project(":remotedata"))
+            }
+        }
+        commonTest {
+            dependencies {
+                implementation(kotlin("test-testng"))
+                implementation(libs.assertk)
+            }
+        }
+    }
+
+    jvmToolchain(11)
 }
 
 tasks.withType<Test> {
     useTestNG()
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("lib") {
-            from(components["kotlin"])
-            artifact(tasks.kotlinSourcesJar)
-        }
-    }
 }
 
 signing {

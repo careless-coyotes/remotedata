@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.carelesscoyotes.remotedata"
-version = "0.2"
+version = "0.3"
 
 repositories {
     mavenCentral()
@@ -14,19 +14,23 @@ repositories {
 kotlin {
     jvm()
     linuxX64()
+    linuxArm64()
+    macosX64()
     macosArm64()
+    ios()
+    iosSimulatorArm64()
 
     sourceSets {
-        named("commonMain") {
+        commonMain {
             dependencies {
                 implementation(kotlin("stdlib-common"))
             }
         }
-        named("commonTest") {
+        commonTest {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
-                implementation("com.willowtreeapps.assertk:assertk:0.25")
+                implementation(libs.assertk)
             }
         }
         named("jvmTest") {
@@ -35,6 +39,8 @@ kotlin {
             }
         }
     }
+
+    jvmToolchain(11)
 }
 
 

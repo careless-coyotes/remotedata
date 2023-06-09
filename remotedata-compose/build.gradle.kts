@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.carelesscoyotes.remotedata"
-version = "0.1"
+version = "0.2"
 
 repositories {
     google()
@@ -17,20 +17,24 @@ repositories {
 
 kotlin {
     jvm()
+    macosX64()
+    macosArm64()
+    ios()
+    iosSimulatorArm64()
 
     sourceSets {
-        named("commonMain") {
+        commonMain {
             dependencies {
                 implementation(kotlin("stdlib-common"))
                 implementation(compose.runtime)
+                implementation(compose.foundation)
                 api(project(":remotedata"))
             }
         }
-        named("commonTest") {
+        commonTest {
             dependencies {
                 implementation(kotlin("test-common"))
                 implementation(kotlin("test-annotations-common"))
-                implementation(libs.mockk)
             }
         }
 
@@ -42,6 +46,8 @@ kotlin {
             }
         }
     }
+
+    jvmToolchain(11)
 }
 
 signing {
