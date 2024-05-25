@@ -12,18 +12,13 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib"))
     implementation(libs.rxjava3.rxkotlin)
     api(project(":remotedata"))
 
-    testImplementation(libs.testng)
+    testImplementation(kotlin("test"))
 }
 
 kotlin.jvmToolchain(11)
-
-tasks.withType<Test> {
-    useTestNG()
-}
 
 publishing {
     publications {

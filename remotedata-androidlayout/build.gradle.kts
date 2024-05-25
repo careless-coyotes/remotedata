@@ -43,7 +43,6 @@ repositories {
 }
 
 dependencies {
-    implementation(kotlin("stdlib-jdk8"))
     api(project(":remotedata"))
 
     testImplementation(libs.testng)

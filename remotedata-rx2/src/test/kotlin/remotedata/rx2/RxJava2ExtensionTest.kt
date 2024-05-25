@@ -2,10 +2,10 @@ package remotedata.rx2
 
 import io.reactivex.Observable
 import io.reactivex.Single
-import org.testng.annotations.Test
 import remotedata.RemoteData
 import remotedata.RemoteData.Companion.failure
 import remotedata.RemoteData.Companion.success
+import kotlin.test.Test
 
 class RxJava2ExtensionTest {
 

@@ -13,11 +13,12 @@ repositories {
 
 kotlin {
     jvm()
-    linuxX64()
     linuxArm64()
-    macosX64()
+    linuxX64()
     macosArm64()
-    ios()
+    macosX64()
+    iosArm64()
+    iosX64()
     iosSimulatorArm64()
 
     sourceSets {
@@ -35,17 +36,12 @@ kotlin {
         }
         named("jvmTest") {
             dependencies {
-                implementation(kotlin("test-testng"))
+                implementation(kotlin("test"))
             }
         }
     }
 
     jvmToolchain(11)
-}
-
-
-tasks.withType<Test> {
-    useTestNG()
 }
 
 signing {
