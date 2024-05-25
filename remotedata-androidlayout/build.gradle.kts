@@ -17,7 +17,6 @@ android {
         minSdk = 21
 
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
-        @Suppress("UnstableApiUsage")
         consumerProguardFiles("consumer-rules.pro")
     }
 
