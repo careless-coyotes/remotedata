@@ -73,6 +73,12 @@ subprojects {
 }
 
 subprojects {
+    tasks.withType<AbstractPublishToMaven> {
+        mustRunAfter(tasks.withType<Sign>())
+    }
+}
+
+subprojects {
     val dokkaJar = tasks.create<Jar>("dokkaJar") {
         archiveClassifier.set("javadoc")
         from(tasks.dokkaHtml)
