@@ -2,11 +2,11 @@ package remotedata.rx3
 
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.core.Single
-import org.testng.annotations.Test
 
 import remotedata.RemoteData
 import remotedata.RemoteData.Companion.failure
 import remotedata.RemoteData.Companion.success
+import kotlin.test.Test
 
 class RxJava3ExtensionTest {
 

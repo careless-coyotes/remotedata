@@ -1,8 +1,7 @@
-import org.jetbrains.compose.ExperimentalComposeLibrary
-
 plugins {
     kotlin("multiplatform")
     alias(libs.plugins.compose)
+    alias(libs.plugins.compose.compiler)
     `maven-publish`
     signing
 }
@@ -17,9 +16,10 @@ repositories {
 
 kotlin {
     jvm()
-    macosX64()
     macosArm64()
-    ios()
+    macosX64()
+    iosArm64()
+    iosX64()
     iosSimulatorArm64()
 
     sourceSets {
@@ -41,7 +41,7 @@ kotlin {
         named("jvmTest") {
             dependencies {
                 implementation(kotlin("test-junit"))
-                implementation(@OptIn(ExperimentalComposeLibrary::class) compose.uiTestJUnit4)
+                implementation(compose.desktop.uiTestJUnit4)
                 implementation(compose.desktop.currentOs)
             }
         }
