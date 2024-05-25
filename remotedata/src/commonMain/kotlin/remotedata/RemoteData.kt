@@ -18,8 +18,8 @@ import remotedata.RemoteData.Companion.success
  * ```
  */
 sealed interface RemoteData<out Error, out Data> {
-    object NotAsked : RemoteData<Nothing, Nothing>
-    object Loading : RemoteData<Nothing, Nothing>
+    data object NotAsked : RemoteData<Nothing, Nothing>
+    data object Loading : RemoteData<Nothing, Nothing>
     data class Failure<T>(val error: T) : RemoteData<T, Nothing>
     data class Success<T>(val data: T) : RemoteData<Nothing, T>
 
