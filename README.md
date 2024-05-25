@@ -1,7 +1,7 @@
 RemoteData library for Kotlin
 =============================
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/careless-coyotes/remotedata/gradle-check.yml?logo=github    )
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/careless-coyotes/remotedata/gradle-check.yml?logo=github)
 ![Codecov](https://img.shields.io/codecov/c/github/careless-coyotes/remotedata?logo=codecov)
 ![Maven Central](https://img.shields.io/maven-central/v/com.carelesscoyotes.remotedata/remotedata-bom?logo=maven)
 
@@ -169,7 +169,7 @@ implementation("com.carelesscoyotes.remotedata:remotedata-rx3")
 You can also use version catalog adding the following to the `libs.versions.toml` file:
 
 ```toml
-remotedata-bom = "com.carelesscoyotes.remotedata:remotedata-bom:0.2"
+remotedata-bom = "com.carelesscoyotes.remotedata:remotedata-bom:0.5"
 remotedata = { module = "com.carelesscoyotes.remotedata:remotedata" }
 remotedata-compose = { module = "com.carelesscoyotes.remotedata:remotedata-compose" }
 remotedata-flow = { module = "com.carelesscoyotes.remotedata:remotedata-flow" }

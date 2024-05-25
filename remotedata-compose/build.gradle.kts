@@ -40,7 +40,7 @@ kotlin {
 
         named("jvmTest") {
             dependencies {
-                implementation(kotlin("test-junit"))
+                implementation(kotlin("test"))
                 implementation(compose.desktop.uiTestJUnit4)
                 implementation(compose.desktop.currentOs)
             }
